@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return const MaterialApp(
       title: 'Flutter Demo',
       home: HomePage(title: 'Flutter Demo Home Page'),
     ).modular();

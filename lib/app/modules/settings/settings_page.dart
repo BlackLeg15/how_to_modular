@@ -7,12 +7,10 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Text('Settings for ${username ?? 'Not identified'}')
-        ],
-      ),
+    return Column(
+      children: [
+        Text('Settings for ${username ?? 'Not identified'}')
+      ],
     );
   }
 }
