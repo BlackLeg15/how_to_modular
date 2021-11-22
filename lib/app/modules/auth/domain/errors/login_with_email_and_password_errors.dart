@@ -9,10 +9,14 @@ abstract class LifecareException {
   }
 }
 
-abstract class LoginWithEmailAndPasswordDomainError extends LifecareException {
-  LoginWithEmailAndPasswordDomainError(String message) : super(message: message);
+abstract class LoginWithEmailAndPasswordError extends LifecareException {
+  LoginWithEmailAndPasswordError(String message) : super(message: message);
 }
 
-class NotValidEmail extends LoginWithEmailAndPasswordDomainError {
+class NotValidEmail extends LoginWithEmailAndPasswordError {
   NotValidEmail(String message) : super(message);
+}
+
+class UnknownLoginWithEmailInfraError extends LoginWithEmailAndPasswordError {
+  UnknownLoginWithEmailInfraError(String message) : super(message);
 }

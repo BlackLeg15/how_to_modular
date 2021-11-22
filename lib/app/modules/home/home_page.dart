@@ -68,6 +68,10 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => Modular.to.navigate('router_outlet/messages'),
               child: const Text('Navegar para Router Outlet'),
             ),
+            ElevatedButton(
+              onPressed: () => Modular.to.pushNamed('../auth'),
+              child: const Text('Navegar para Autenticação'),
+            ),
           ],
         ),
       ),

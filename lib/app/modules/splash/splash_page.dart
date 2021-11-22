@@ -16,7 +16,8 @@ class _SplashPageState extends State<SplashPage> {
       //Modular.get<IStorageService>().init(),
       Future.delayed(const Duration(seconds: 4)),
     ]).then((value) {
-      Modular.to.pushNamed('/home/');
+      //Modular.to.pushNamed('/home/');
+      Modular.to.pushNamed('/auth/');
     });
   }
 

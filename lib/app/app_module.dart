@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:lifecare_app/app/app_controller.dart';
-import 'package:lifecare_app/app/modules/auth/domain/usecases/login_with_email_and_password/login_with_email_and_password_usecase_impl.dart';
+import 'package:lifecare_app/app/modules/auth/auth_module.dart';
 import 'package:lifecare_app/app/modules/home/home_module.dart';
 import 'package:lifecare_app/app/modules/splash/splash_page.dart';
-import 'package:lifecare_app/app/shared/route_guard/route_guard_impl.dart';
 import 'package:lifecare_app/app/shared/stores/lazy_factory_store.dart';
 import 'package:lifecare_app/app/shared/stores/lazy_singleton_store.dart';
 import 'package:lifecare_app/app/shared/stores/not_lazy_singleton_store.dart';
@@ -19,10 +18,8 @@ class AppModule extends Module {
     //Instancia do OneSignal (notificacao)
     
     //Bind((i) => HiveStorage()),
-    Bind((i) => AppController(appRepository: i(), loginWithEmailAndPasswordUsecase: i())),
+    Bind((i) => AppController()),
     Bind((i) => AppRepository()),
-    //TODO(adbysantos) Implementar repositório para Login
-    //Bind((i) => LoginWithEmailAndPasswordUsecaseImpl()),
 
     //Testing binds
     Bind((i) => LazyFactoryStore(), isSingleton: false),
@@ -40,10 +37,9 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (_, args) => const SplashPage()),
-    ModuleRoute('/home', module: HomeModule(), guards: [
-      RouteGuardImpl()
-    ]),
+    ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/settings', module: SettingsModule()),
+    ModuleRoute('/auth', module: AuthModule()),
     WildcardRoute(
         child: (_, args) => Scaffold(
               appBar: AppBar(title: Text('404 error')),
