@@ -5,6 +5,7 @@ import 'package:lifecare_app/app/modules/auth/infra/datasources/auth_datasource.
 class AuthDatasourceMockImpl implements AuthDatasource {
   @override
   Future<LoginWithEmailAndPasswordEntity> loginWithEmailAndPassword(LoginWithEmailAndPasswordParams params) async {
+    // await Future.delayed(const Duration(seconds: 1));
     return LoginWithEmailAndPasswordEntity(0, 'token', 'adby santos');
   }
 }
