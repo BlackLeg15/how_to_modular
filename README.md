@@ -1,4 +1,4 @@
-# lifecare_app
+# lifecare
 
 A new Flutter project.
 

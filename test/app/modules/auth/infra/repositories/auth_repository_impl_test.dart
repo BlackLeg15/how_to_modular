@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lifecare_app/app/modules/auth/domain/entities/login_with_email_and_password_entity.dart';
-import 'package:lifecare_app/app/modules/auth/domain/params/login_with_email_and_password_params.dart';
-import 'package:lifecare_app/app/modules/auth/infra/datasources/auth_datasource.dart';
-import 'package:lifecare_app/app/modules/auth/infra/repositories/auth_repository_impl.dart';
+import 'package:lifecare/app/modules/auth/domain/entities/login_with_email_and_password_entity.dart';
+import 'package:lifecare/app/modules/auth/domain/params/login_with_email_and_password_params.dart';
+import 'package:lifecare/app/modules/auth/infra/datasources/auth_datasource.dart';
+import 'package:lifecare/app/modules/auth/infra/repositories/auth_repository_impl.dart';
 import 'package:mocktail/mocktail.dart';
 
 class AuthDatasourceMock extends Mock implements AuthDatasource {}

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lifecare_app/app/modules/auth/domain/errors/login_with_email_and_password_errors.dart';
-import 'package:lifecare_app/app/modules/auth/presenter/auth_controller.dart';
-import 'package:lifecare_app/app/modules/auth/presenter/stores/login_with_email_and_password/states/login_with_email_and_password_store_states.dart';
+import 'package:lifecare/app/modules/auth/domain/errors/login_with_email_and_password_errors.dart';
+import 'package:lifecare/app/modules/auth/presenter/auth_controller.dart';
+import 'package:lifecare/app/modules/auth/presenter/stores/login_with_email_and_password/states/login_with_email_and_password_store_states.dart';
 import 'package:mobx/mobx.dart';
 
 class AuthPage extends StatefulWidget {
@@ -70,6 +70,12 @@ class _AuthPageState extends State<AuthPage> {
             key: Key('login_button'),
             onPressed: authController.loginWithEmailAndPassword,
             child: const Text('Login with email and password'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Modular.to.pushNamed('signup');
+            },
+            child: const Text('Go to signup'),
           )
         ],
       ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lifecare_app/app/modules/auth/domain/params/login_with_email_and_password_params.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'stores/login_with_email_and_password/login_with_email_and_password_store.dart';
 
-class AuthController {
+class AuthController implements Disposable {
   final LoginWithEmailAndPasswordStore loginWithEmailAndPasswordStore;
 
   final emailController = TextEditingController();
@@ -15,16 +15,12 @@ class AuthController {
   AuthController(this.loginWithEmailAndPasswordStore);
 
   Future<void> loginWithEmailAndPassword() async {
-    // final result = await loginWithEmailAndPasswordStore.usecase(LoginWithEmailAndPasswordParams(emailController.text, passwordController.text));
-    // result.fold(
-    //   (error) {
-    //     errorMessage = error.message;
-    //   },
-    //   (loginEntity) {
-    //     username = loginEntity.username;
-    //   },
-    // );
-
     loginWithEmailAndPasswordStore.loginWithEmailAndPassword(emailController.text, passwordController.text);
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
   }
 }

@@ -1,13 +1,4 @@
-abstract class LifecareException {
-  String message;
-  LifecareException({
-    required this.message,
-  });
-  @override
-  String toString() {
-    return message;
-  }
-}
+import 'package:lifecare/app/shared/errors/lifecare_exception.dart';
 
 abstract class LoginWithEmailAndPasswordError extends LifecareException {
   LoginWithEmailAndPasswordError(String message) : super(message: message);

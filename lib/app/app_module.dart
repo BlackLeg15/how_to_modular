@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lifecare_app/app/app_controller.dart';
-import 'package:lifecare_app/app/modules/auth/auth_module.dart';
-import 'package:lifecare_app/app/modules/home/home_module.dart';
-import 'package:lifecare_app/app/modules/splash/splash_page.dart';
-import 'package:lifecare_app/app/shared/stores/lazy_factory_store.dart';
-import 'package:lifecare_app/app/shared/stores/lazy_singleton_store.dart';
-import 'package:lifecare_app/app/shared/stores/not_lazy_singleton_store.dart';
+import 'package:lifecare/app/app_controller.dart';
+import 'package:lifecare/app/modules/auth/auth_module.dart';
+import 'package:lifecare/app/modules/home/home_module.dart';
+import 'package:lifecare/app/modules/splash/splash_page.dart';
+import 'package:lifecare/app/shared/stores/lazy_factory_store.dart';
+import 'package:lifecare/app/shared/stores/lazy_singleton_store.dart';
+import 'package:lifecare/app/shared/stores/not_lazy_singleton_store.dart';
 
 import 'modules/app_repository.dart';
 import 'modules/settings/settings_module.dart';

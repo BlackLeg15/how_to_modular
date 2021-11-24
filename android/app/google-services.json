@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "658870067371",
+    "project_id": "lifecare-be786",
+    "storage_bucket": "lifecare-be786.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658870067371:android:a08af136cf15cdbffe17ee",
+        "android_client_info": {
+          "package_name": "br.com.lifecare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658870067371-ovo5rjmr2e60o4fal00bf7edbtp0p8jb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.lifecare",
+            "certificate_hash": "4a20e1dcedeff118a9d719645176cc3978fb5b80"
+          }
+        },
+        {
+          "client_id": "658870067371-jbfdeipbm62b6kgufvnk1s9lajqu3a2b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqRCIH5XoD8G7tNOHCw30cULCOWT-2WZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658870067371-jbfdeipbm62b6kgufvnk1s9lajqu3a2b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
