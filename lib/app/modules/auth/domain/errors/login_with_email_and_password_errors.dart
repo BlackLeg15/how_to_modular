@@ -7,6 +7,13 @@ abstract class LoginWithEmailAndPasswordError extends LifecareException {
 class NotValidEmail extends LoginWithEmailAndPasswordError {
   NotValidEmail(String message) : super(message);
 }
+class UserNotFoundLoginError extends LoginWithEmailAndPasswordError {
+  UserNotFoundLoginError(String message) : super(message);
+}
+
+class WrongPasswordLoginError extends LoginWithEmailAndPasswordError {
+  WrongPasswordLoginError(String message) : super(message);
+}
 
 class UnknownLoginWithEmailInfraError extends LoginWithEmailAndPasswordError {
   UnknownLoginWithEmailInfraError(String message) : super(message);

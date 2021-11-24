@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:lifecare/app/modules/auth/domain/errors/login_with_email_and_password_errors.dart';
 import 'package:lifecare/app/modules/auth/domain/errors/signup_with_email_and_password_errors.dart';
 import 'package:lifecare/app/modules/auth/domain/params/signup_with_email_and_password_params.dart';
 import 'package:lifecare/app/modules/auth/domain/params/login_with_email_and_password_params.dart';
@@ -12,8 +13,23 @@ class AuthDatasourceFirebaseImpl implements AuthDatasource {
   AuthDatasourceFirebaseImpl(this.firebaseAuthInstance);
 
   @override
-  Future<LoginWithEmailAndPasswordEntity> loginWithEmailAndPassword(LoginWithEmailAndPasswordParams params) {
-    throw UnimplementedError();
+  Future<LoginWithEmailAndPasswordEntity> loginWithEmailAndPassword(LoginWithEmailAndPasswordParams params) async {
+    var entity = LoginWithEmailAndPasswordEntity(-1, '', '');
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: params.email, password: params.password);
+      entity = LoginWithEmailAndPasswordEntity(int.tryParse(userCredential.user?.uid ?? '') ?? -1, userCredential.credential?.token.toString() ?? '', userCredential.user?.displayName ?? '');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        throw (UserNotFoundLoginError('No user found for that email.'));
+      } else if (e.code == 'wrong-password') {
+        throw (WrongPasswordLoginError('Wrong password provided for that user.'));
+      } else {
+        rethrow;
+      }
+    } catch (e) {
+      rethrow;
+    }
+    return entity;
   }
 
   @override
@@ -27,6 +43,8 @@ class AuthDatasourceFirebaseImpl implements AuthDatasource {
         throw (NotValidPasswordForSignup('The password provided is too weak.'));
       } else if (e.code == 'email-already-in-use') {
         throw (NotValidEmailForSignup('The account already exists for that email.'));
+      } else {
+        rethrow;
       }
     } catch (e) {
       rethrow;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lifecare/app/modules/auth/domain/errors/login_with_email_and_password_errors.dart';
-import 'package:lifecare/app/modules/auth/presenter/auth_controller.dart';
-import 'package:lifecare/app/modules/auth/presenter/stores/login_with_email_and_password/states/login_with_email_and_password_store_states.dart';
 import 'package:mobx/mobx.dart';
+
+import 'auth_controller.dart';
+import 'stores/login_with_email_and_password/states/login_with_email_and_password_store_states.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -24,7 +24,11 @@ class _AuthPageState extends State<AuthPage> {
       final loginWithEmailStore = authController.loginWithEmailAndPasswordStore;
       final storeStatus = loginWithEmailStore.status;
       if (storeStatus is LoginWithEmailAndPasswordStoreErrorState) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(storeStatus.message.substring(0, 200))));
+        var message = storeStatus.message;
+        if (message.length > 200) {
+          message = message.substring(0, 200);
+        }
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
       }
     });
   }

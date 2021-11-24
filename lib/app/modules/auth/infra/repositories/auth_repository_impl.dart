@@ -18,6 +18,8 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final result = await _datasource.loginWithEmailAndPassword(params);
       return Right(result);
+    } on LoginWithEmailAndPasswordError catch (e) {
+      return Left(e);
     } catch (e, stacktrace) {
       return Left(UnknownLoginWithEmailInfraError('Unknown Login With E-mail Error: $stacktrace'));
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 
 import '../stores/signup_with_email_and_password/states/signup_with_email_and_password_store_states.dart';
 import 'signup_controller.dart';
@@ -14,6 +15,25 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final SignupController controller = Modular.get();
+  late final ReactionDisposer disposer;
+
+  @override
+  void initState() {
+    super.initState();
+    disposer = autorun((_) {
+      final loginWithEmailStore = controller.signupWithEmailAndPasswordStore;
+      final storeStatus = loginWithEmailStore.status;
+      if (storeStatus is SignupWithEmailAndPasswordStoreErrorState) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(storeStatus.message)));
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    disposer();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
