@@ -7,18 +7,20 @@ import '../../../domain/errors/signup_with_email_and_password_errors.dart';
 import '../../../domain/params/login_with_email_and_password_params.dart';
 import '../../../domain/params/signup_with_email_and_password_params.dart';
 import '../../../infra/datasources/auth_datasource.dart';
+import 'mapper/auth_datasource_firebase_mapper.dart';
 
 class AuthDatasourceFirebaseImpl implements AuthDatasource {
   final FirebaseAuth firebaseAuthInstance;
+  final AuthDatasourceFirebaseMapper mapper;
 
-  AuthDatasourceFirebaseImpl(this.firebaseAuthInstance);
+  AuthDatasourceFirebaseImpl(this.firebaseAuthInstance, this.mapper);
 
   @override
   Future<LoginWithEmailAndPasswordEntity> loginWithEmailAndPassword(LoginWithEmailAndPasswordParams params) async {
     var entity = LoginWithEmailAndPasswordEntity(-1, '', '');
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: params.email, password: params.password);
-      entity = LoginWithEmailAndPasswordEntity(int.tryParse(userCredential.user?.uid ?? '') ?? -1, userCredential.credential?.token.toString() ?? '', userCredential.user?.displayName ?? '');
+      UserCredential userCredential = await firebaseAuthInstance.signInWithEmailAndPassword(email: params.email, password: params.password);
+      entity = mapper.fromUserCredentialToLoginEntity(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         throw (UserNotFoundLoginError('No user found for that email.'));
@@ -37,8 +39,8 @@ class AuthDatasourceFirebaseImpl implements AuthDatasource {
   Future<SignupWithEmailAndPasswordEntity> signupWithEmailAndPassword(SignupWithEmailAndPasswordParams params) async {
     var entity = SignupWithEmailAndPasswordEntity(-1, '', '');
     try {
-      UserCredential userCredential = await firebaseAuthInstance.createUserWithEmailAndPassword(email: params.email, password: params.password);
-      entity = SignupWithEmailAndPasswordEntity(int.tryParse(userCredential.user?.uid ?? '-1') ?? -1, userCredential.credential?.token.toString() ?? '', userCredential.user?.displayName ?? '');
+      final userCredential = await firebaseAuthInstance.createUserWithEmailAndPassword(email: params.email, password: params.password);
+      entity = mapper.fromUserCredentialToSignupEntity(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         throw (NotValidPasswordForSignup('The password provided is too weak.'));

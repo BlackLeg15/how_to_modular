@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'infra/datasources/auth_datasource.dart';
 
 import 'domain/usecases/login_with_email_and_password/login_with_email_and_password_usecase_impl.dart';
 import 'domain/usecases/signup_with_email_and_password/signup_with_email_and_password_usecase_impl.dart';
 import 'external/datasources/firebase/auth_datasource_firebase_impl.dart';
+import 'external/datasources/firebase/mapper/auth_datasource_firebase_mapper.dart';
 import 'infra/repositories/auth_repository_impl.dart';
 import 'presenter/auth_controller.dart';
 import 'presenter/auth_page.dart';
@@ -28,9 +30,11 @@ class AuthModule extends Module {
         Bind((i) => AuthRepositoryImpl(i())),
         //Datasources
         //Bind((i) => AuthDatasourceMockImpl()),
-        Bind((i) => AuthDatasourceFirebaseImpl(i())),
+        Bind<AuthDatasource>((i) => AuthDatasourceFirebaseImpl(i(), i())),
         //FirebaseAuth
-        Bind((i) => FirebaseAuth.instance)
+        Bind((i) => FirebaseAuth.instance),
+        //FirebaseAuthMapper
+        Bind((i) => AuthDatasourceFirebaseMapper())
       ];
 
   @override

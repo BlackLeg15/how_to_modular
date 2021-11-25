@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lifecare/app/modules/auth/auth_module.dart';
 import 'package:lifecare/app/modules/auth/domain/usecases/login_with_email_and_password/login_with_email_and_password_usecase.dart';
+import 'package:lifecare/app/modules/auth/external/datasources/mock/auth_datsource_mock.dart';
+import 'package:lifecare/app/modules/auth/infra/datasources/auth_datasource.dart';
 import 'package:lifecare/app/modules/auth/presenter/auth_page.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:modular_test/modular_test.dart';
@@ -13,7 +16,9 @@ void main() {
   setUpAll(() {
     initModules([
       AuthModule()
-    ], replaceBinds: []);
+    ], replaceBinds: [
+      Bind<AuthDatasource>((i) => AuthDatasourceMockImpl())
+    ]);
   });
 
   group('AuthPage.loginWithEmailAndPassword', () {
