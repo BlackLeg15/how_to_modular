@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:lifecare/app/modules/auth/domain/errors/signup_with_email_and_password_errors.dart';
-import 'package:lifecare/app/modules/auth/domain/params/signup_with_email_and_password_params.dart';
 
+import '../../errors/signup_with_email_and_password_errors.dart';
+import '../../params/signup_with_email_and_password_params.dart';
 import '../../repositories/auth_repository.dart';
 import '../../typedefs/signup_with_email_and_password_typedef.dart';
 import 'signup_with_email_and_password_usecase.dart';

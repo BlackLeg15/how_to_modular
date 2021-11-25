@@ -13,11 +13,11 @@ class RouterOutletPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Router Outlet'),
+          title: const Text('Router Outlet'),
         ),
         body: Column(
           children: [
-            Text(
+             const Text(
               'Bem-vindo',
               style: TextStyle(fontSize: 40),
             ),
@@ -33,22 +33,22 @@ class RouterOutletPage extends StatelessWidget {
                   onPressed: () {
                     Modular.to.navigate('messages');
                   },
-                  child: Text('Mensagens')),
+                  child: const Text('Mensagens')),
               TextButton(
                   onPressed: () {
                     Modular.to.navigate('calls');
                   },
-                  child: Text('Ligações')),
+                  child: const Text('Ligações')),
               TextButton(
                   onPressed: () {
                     Modular.to.navigate('e-mails');
                   },
-                  child: Text('E-mails')),
+                  child: const Text('E-mails')),
               TextButton(
                   onPressed: () {
                     Modular.to.navigate('support');
                   },
-                  child: Text('Suporte')),
+                  child: const Text('Suporte')),
             ],
           ),
         ),

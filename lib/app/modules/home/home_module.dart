@@ -1,10 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lifecare/app/modules/home/testing_router_outlet/router_outlet_module.dart';
 
 import 'home_page.dart';
 import 'testing_binds_pages/lazy_factory_page.dart';
 import 'testing_binds_pages/lazy_singleton_page.dart';
 import 'testing_binds_pages/not_lazy_singleton_page.dart';
+import 'testing_router_outlet/router_outlet_module.dart';
 
 class HomeModule extends Module {
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lifecare/app/modules/settings/settings_page.dart';
+
+import 'settings_page.dart';
 
 class SettingsModule extends Module {
   @override

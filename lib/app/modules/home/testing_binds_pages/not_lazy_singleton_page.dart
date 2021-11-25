@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lifecare/app/modules/home/widgets/listener_counter_widget.dart';
-import 'package:lifecare/app/shared/stores/not_lazy_singleton_store.dart';
+import '../widgets/listener_counter_widget.dart';
+import '../../../shared/stores/not_lazy_singleton_store.dart';
 
 class NotLazySingletonPage extends StatefulWidget {
   const NotLazySingletonPage({Key? key, required this.title}) : super(key: key);

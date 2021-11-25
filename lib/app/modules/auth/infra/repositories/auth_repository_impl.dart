@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:lifecare/app/modules/auth/domain/errors/login_with_email_and_password_errors.dart';
-import 'package:lifecare/app/modules/auth/domain/errors/signup_with_email_and_password_errors.dart';
-import 'package:lifecare/app/modules/auth/domain/params/login_with_email_and_password_params.dart';
-import 'package:lifecare/app/modules/auth/domain/params/signup_with_email_and_password_params.dart';
-import 'package:lifecare/app/modules/auth/domain/repositories/auth_repository.dart';
-import 'package:lifecare/app/modules/auth/domain/typedefs/login_with_email_and_password_typedef.dart';
-import 'package:lifecare/app/modules/auth/domain/typedefs/signup_with_email_and_password_typedef.dart';
-import 'package:lifecare/app/modules/auth/infra/datasources/auth_datasource.dart';
+
+import '../../domain/errors/login_with_email_and_password_errors.dart';
+import '../../domain/errors/signup_with_email_and_password_errors.dart';
+import '../../domain/params/login_with_email_and_password_params.dart';
+import '../../domain/params/signup_with_email_and_password_params.dart';
+import '../../domain/repositories/auth_repository.dart';
+import '../../domain/typedefs/login_with_email_and_password_typedef.dart';
+import '../../domain/typedefs/signup_with_email_and_password_typedef.dart';
+import '../datasources/auth_datasource.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthDatasource _datasource;

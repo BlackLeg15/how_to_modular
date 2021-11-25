@@ -66,12 +66,12 @@ class _AuthPageState extends State<AuthPage> {
             controller: authController.emailController,
           ),
           TextField(
-            key: Key('pass_field'),
+            key: const Key('pass_field'),
             decoration: const InputDecoration(label: Text('Password')),
             controller: authController.passwordController,
           ),
           ElevatedButton(
-            key: Key('login_button'),
+            key: const Key('login_button'),
             onPressed: authController.loginWithEmailAndPassword,
             child: const Text('Login with email and password'),
           ),

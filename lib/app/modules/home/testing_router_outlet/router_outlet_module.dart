@@ -13,9 +13,9 @@ class RouterOutletModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (_, args) => const RouterOutletPage(), children: [
-          ChildRoute('/messages', child: (_, args) => MessagesPage()),
-          ChildRoute('/calls', child: (_, args) => CallsPage()),
-          ChildRoute('/e-mails', child: (_, args) => EmailsPage()),
+          ChildRoute('/messages', child: (_, args) => const MessagesPage()),
+          ChildRoute('/calls', child: (_, args) => const CallsPage()),
+          ChildRoute('/e-mails', child: (_, args) => const EmailsPage()),
           ChildRoute('/support', child: (_, args) => SupportModule()),
         ]),
       ];
