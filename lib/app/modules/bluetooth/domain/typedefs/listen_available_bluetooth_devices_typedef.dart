@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../entities/available_bluetooth_device_entity.dart';
 import '../errors/listen_available_bluetooth_devices_errors.dart';
+import '../snapshot/listen_available_bluetooth_devices_snapshot.dart';
 
-typedef ListenAvailableBluetoothDevicesResult = Future<Either<ListenAvailableBluetoothDevicesError, List<AvailableBluetoothDeviceEntity>>>;
+typedef ListenAvailableBluetoothDevicesResult = Either<ListenAvailableBluetoothDevicesError, ListenAvailableBluetoothDevicesSnapshot>;
