@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'app_controller.dart';
 import 'modules/app_repository.dart';
 import 'modules/auth/auth_module.dart';
+import 'modules/bluetooth/bluetooth_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/settings/settings_module.dart';
 import 'modules/splash/splash_page.dart';
@@ -40,6 +41,7 @@ class AppModule extends Module {
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/settings', module: SettingsModule()),
     ModuleRoute('/auth', module: AuthModule()),
+    ModuleRoute('/bluetooth', module: BluetoothModule()),
     WildcardRoute(
         child: (_, args) => Scaffold(
               appBar: AppBar(title: const Text('404 error')),

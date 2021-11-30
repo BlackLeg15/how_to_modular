@@ -12,9 +12,9 @@ class BluetoothRepositoryImpl implements BluetoothRepository {
   BluetoothRepositoryImpl(this.datasource);
 
   @override
-  ListenAvailableBluetoothDevicesResult listenAvailableBluetoothDevices(ListenAvailableBluetoothDevicesParams params) {
+  ListenAvailableBluetoothDevicesResult listenAvailableBluetoothDevices(ListenAvailableBluetoothDevicesParams params) async {
     try {
-      final result = datasource.listenAvailableBluetoothDevices(params);
+      final result = await datasource.listenAvailableBluetoothDevices(params);
       return Right(result);
     } catch (e, stacktrace) {
       return Left(UnknownListenAvailableBluetoothDevicesError('UnknownListenAvailableBluetoothDevicesError: $stacktrace'));

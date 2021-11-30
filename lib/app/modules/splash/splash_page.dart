@@ -19,7 +19,8 @@ class _SplashPageState extends State<SplashPage> {
       Future.delayed(const Duration(seconds: 4)),
     ]).then((value) {
       //Modular.to.pushNamed('/home/');
-      Modular.to.pushNamed('/auth/');
+      //Modular.to.pushNamed('/auth/');
+      Modular.to.pushNamed('/bluetooth/');
     });
   }
 

@@ -11,7 +11,8 @@ class BluetoothDatasourceFlutterBlueImpl implements BluetoothDatasource {
   BluetoothDatasourceFlutterBlueImpl(this.flutterBlueInstance);
 
   @override
-  ListenAvailableBluetoothDevicesSnapshot listenAvailableBluetoothDevices(ListenAvailableBluetoothDevicesParams params) {
+  Future<ListenAvailableBluetoothDevicesSnapshot> listenAvailableBluetoothDevices(ListenAvailableBluetoothDevicesParams params) async {
+    await flutterBlueInstance.startScan(timeout: const Duration(seconds: 5));
     return AvailableBluetoothDevicesBlueSnapshotImpl(flutterBlueInstance);
   }
 }
