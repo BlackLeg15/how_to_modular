@@ -34,7 +34,7 @@ class AuthModule extends Module {
         //FirebaseAuth
         Bind((i) => FirebaseAuth.instance),
         //FirebaseAuthMapper
-        Bind((i) => AuthDatasourceFirebaseMapper())
+        Bind((i) => AuthDatasourceFirebaseMapper()),
       ];
 
   @override

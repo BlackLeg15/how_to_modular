@@ -12,13 +12,27 @@ class BluetoothPage extends StatefulWidget {
   _BluetoothPageState createState() => _BluetoothPageState();
 }
 
-class _BluetoothPageState extends State<BluetoothPage> {
+class _BluetoothPageState extends State<BluetoothPage> with WidgetsBindingObserver {
   final controller = Modular.get<BluetoothPageController>();
+  //TextEditingController
 
   @override
   void initState() {
-    controller.initScan();
     super.initState();
+    controller.initScan();
+    WidgetsBinding.instance!.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    //if (state == AppLifecycleState.paused) {}
+    //if (state == AppLifecycleState.resumed) {}
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
   }
 
   @override

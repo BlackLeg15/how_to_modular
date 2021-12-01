@@ -272,6 +272,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_background_service:
+    dependency: "direct main"
+    description:
+      name: flutter_background_service
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.5"
   flutter_blue:
     dependency: "direct main"
     description:
@@ -756,6 +763,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.10"
+  workmanager:
+    dependency: "direct main"
+    description:
+      name: workmanager
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.1"
   xdg_directories:
     dependency: transitive
     description:
