@@ -1,9 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
+
+import 'background_controller.dart';
 import 'background_page.dart';
 
-class BackgroundService extends Module {
+class BackgroundModule extends Module {
   @override
-  List<Bind<Object>> get binds => [];
+  List<Bind> get binds => [
+        Bind((i) => BackgroundController(i()))
+      ];
 
   @override
   List<ModularRoute> get routes => [
