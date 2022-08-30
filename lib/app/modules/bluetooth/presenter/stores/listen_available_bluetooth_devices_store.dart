@@ -9,9 +9,9 @@ import 'states/listen_available_bluetooth_devices_store_states.dart';
 
 part 'listen_available_bluetooth_devices_store.g.dart';
 
-class ListenAvailableBluetoothDevicesStore = _ListenAvailableBluetoothDevicesStoreBase with _$ListenAvailableBluetoothDevicesStore;
+class ListenAvailableBluetoothDevicesStore = ListenAvailableBluetoothDevicesStoreBase with _$ListenAvailableBluetoothDevicesStore;
 
-abstract class _ListenAvailableBluetoothDevicesStoreBase with Store {
+abstract class ListenAvailableBluetoothDevicesStoreBase with Store {
   final ListenAvailableBluetoothDevicesUsecase usecase;
 
   @observable
@@ -19,7 +19,7 @@ abstract class _ListenAvailableBluetoothDevicesStoreBase with Store {
 
   ListenAvailableBluetoothDevicesSnapshot? _devicesSnapshot;
 
-  _ListenAvailableBluetoothDevicesStoreBase(this.usecase);
+  ListenAvailableBluetoothDevicesStoreBase(this.usecase);
 
   Future<void> initScan() async {
     status = ListenAvailableBluetoothDevicesStoreLoadingState();

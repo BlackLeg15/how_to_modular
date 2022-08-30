@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:workmanager/workmanager.dart';
 
-import '../../../../../main.dart';
 import '../stores/signup_with_email_and_password/states/signup_with_email_and_password_store_states.dart';
 import 'signup_controller.dart';
 
@@ -12,7 +10,7 @@ class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);
 
   @override
-  _SignupPageState createState() => _SignupPageState();
+  createState() => _SignupPageState();
 }
 
 class _SignupPageState extends State<SignupPage> {
@@ -76,15 +74,7 @@ class _SignupPageState extends State<SignupPage> {
           ElevatedButton(
             //key: Key('signup_button'),
             onPressed: () {
-              Workmanager()
-                  .initialize(
-                callbackDispatcher,
-                isInDebugMode: true,
-              )
-                  .then((value) {
-                Workmanager().registerOneOffTask('test_once', 'Test Once', initialDelay: const Duration(seconds: 20));
-                Workmanager().registerPeriodicTask('test_periodic', 'Test Periodic');
-              });
+              
             },
             child: const Text('Workmanager'),
           ),

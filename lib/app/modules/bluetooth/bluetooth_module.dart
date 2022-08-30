@@ -1,4 +1,4 @@
-import 'package:flutter_blue/flutter_blue.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'domain/usecases/listen_available_bluetooth_devices/listen_available_bluetooth_devices_impl.dart';
@@ -16,7 +16,7 @@ class BluetoothModule extends Module {
         Bind((i) => ListenAvailableBluetoothDevicesUsecaseImpl(i())),
         Bind((i) => BluetoothRepositoryImpl(i())),
         Bind((i) => BluetoothDatasourceFlutterBlueImpl(i())),
-        Bind((i) => FlutterBlue.instance),
+        Bind((i) => FlutterBluePlus.instance),
       ];
 
   @override

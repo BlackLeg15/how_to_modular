@@ -6,7 +6,6 @@ import 'modules/app_repository.dart';
 import 'modules/auth/auth_module.dart';
 import 'modules/background/background_module.dart';
 import 'modules/background/stores/background_service_store.dart';
-import 'modules/bluetooth/bluetooth_module.dart';
 import 'modules/home/home_module.dart';
 import 'modules/settings/settings_module.dart';
 import 'modules/splash/splash_page.dart';
@@ -45,7 +44,6 @@ class AppModule extends Module {
     ModuleRoute('/home', module: HomeModule()),
     ModuleRoute('/settings', module: SettingsModule()),
     ModuleRoute('/auth', module: AuthModule()),
-    ModuleRoute('/bluetooth', module: BluetoothModule()),
     ModuleRoute('/background', module: BackgroundModule()),
     WildcardRoute(
         child: (_, args) => Scaffold(

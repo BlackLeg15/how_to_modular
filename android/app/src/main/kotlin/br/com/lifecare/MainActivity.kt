@@ -16,11 +16,8 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.MultiplePermissionsReport
 import br.com.lifecare.ForegroundService
 import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.*
 import com.karumi.dexter.PermissionToken
-import com.google.android.gms.location.LocationSettingsRequest
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsResponse
 import com.karumi.dexter.listener.PermissionRequest
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -123,7 +120,7 @@ open class MainActivity: FlutterActivity() {
         val locationRequest = LocationRequest.create()
             .setInterval(1000)
             .setFastestInterval(3000)
-            .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+            .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
         val builder = LocationSettingsRequest.Builder()
             .addLocationRequest(locationRequest)
         LocationServices

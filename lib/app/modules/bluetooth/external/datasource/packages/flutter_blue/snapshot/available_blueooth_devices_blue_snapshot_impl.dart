@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter_blue/flutter_blue.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 import '../../../../../domain/entities/available_bluetooth_device_entity.dart';
 import '../../../../../domain/snapshot/listen_available_bluetooth_devices_snapshot.dart';
 
 class AvailableBluetoothDevicesBlueSnapshotImpl extends ListenAvailableBluetoothDevicesSnapshot {
-  final FlutterBlue flutterBlueInstance;
+  final FlutterBluePlus flutterBlueInstance;
   //StreamSubscription? _streamSubscription;
 
   AvailableBluetoothDevicesBlueSnapshotImpl(this.flutterBlueInstance);

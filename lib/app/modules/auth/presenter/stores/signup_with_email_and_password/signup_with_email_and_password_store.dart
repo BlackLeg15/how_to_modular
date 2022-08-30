@@ -6,12 +6,12 @@ import 'states/signup_with_email_and_password_store_states.dart';
 
 part 'signup_with_email_and_password_store.g.dart';
 
-class SignupWithEmailAndPasswordStore = _SignupWithEmailAndPasswordStoreBase with _$SignupWithEmailAndPasswordStore;
+class SignupWithEmailAndPasswordStore = SignupWithEmailAndPasswordStoreBase with _$SignupWithEmailAndPasswordStore;
 
-abstract class _SignupWithEmailAndPasswordStoreBase with Store {
+abstract class SignupWithEmailAndPasswordStoreBase with Store {
   final SignupWithEmailAndPasswordUsecase usecase;
 
-  _SignupWithEmailAndPasswordStoreBase(this.usecase);
+  SignupWithEmailAndPasswordStoreBase(this.usecase);
 
   @observable
   SignupWithEmailAndPasswordStoreState status = SignupWithEmailAndPasswordStoreInitialState();

@@ -9,7 +9,7 @@ class BluetoothPage extends StatefulWidget {
   const BluetoothPage({Key? key}) : super(key: key);
 
   @override
-  _BluetoothPageState createState() => _BluetoothPageState();
+  createState() => _BluetoothPageState();
 }
 
 class _BluetoothPageState extends State<BluetoothPage> with WidgetsBindingObserver {
@@ -20,7 +20,7 @@ class _BluetoothPageState extends State<BluetoothPage> with WidgetsBindingObserv
   void initState() {
     super.initState();
     controller.initScan();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -31,7 +31,7 @@ class _BluetoothPageState extends State<BluetoothPage> with WidgetsBindingObserv
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

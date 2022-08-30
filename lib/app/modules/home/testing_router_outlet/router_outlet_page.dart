@@ -16,8 +16,8 @@ class RouterOutletPage extends StatelessWidget {
           title: const Text('Router Outlet'),
         ),
         body: Column(
-          children: [
-             const Text(
+          children: const [
+             Text(
               'Bem-vindo',
               style: TextStyle(fontSize: 40),
             ),

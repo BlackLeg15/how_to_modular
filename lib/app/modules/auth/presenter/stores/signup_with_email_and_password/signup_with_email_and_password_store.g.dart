@@ -6,12 +6,12 @@ part of 'signup_with_email_and_password_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SignupWithEmailAndPasswordStore
-    on _SignupWithEmailAndPasswordStoreBase, Store {
-  final _$statusAtom =
-      Atom(name: '_SignupWithEmailAndPasswordStoreBase.status');
+    on SignupWithEmailAndPasswordStoreBase, Store {
+  late final _$statusAtom = Atom(
+      name: 'SignupWithEmailAndPasswordStoreBase.status', context: context);
 
   @override
   SignupWithEmailAndPasswordStoreState get status {
@@ -26,8 +26,9 @@ mixin _$SignupWithEmailAndPasswordStore
     });
   }
 
-  final _$signupWithEmailAndPasswordAsyncAction = AsyncAction(
-      '_SignupWithEmailAndPasswordStoreBase.signupWithEmailAndPassword');
+  late final _$signupWithEmailAndPasswordAsyncAction = AsyncAction(
+      'SignupWithEmailAndPasswordStoreBase.signupWithEmailAndPassword',
+      context: context);
 
   @override
   Future signupWithEmailAndPassword(String email, String password) {

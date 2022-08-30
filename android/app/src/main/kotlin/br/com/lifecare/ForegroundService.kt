@@ -7,24 +7,20 @@ import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Binder
 import android.os.Build
 import android.os.IBinder
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import br.com.lifecare.ForegroundService.MyBinder
-import br.com.lifecare.ForegroundService
 import com.google.android.gms.location.*
 
 class ForegroundService : Service() {
-    private val mBinder: IBinder = MyBinder()
-    override fun onBind(intent: Intent): IBinder? {
-        return mBinder
-    }
-
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         return START_STICKY
+    }
+
+    override fun onBind(p0: Intent?): IBinder? {
+        return null
     }
 
     override fun onCreate() {
@@ -36,7 +32,7 @@ class ForegroundService : Service() {
     private fun buildNotification() {
         val stop = "stop"
         val broadcastIntent = PendingIntent.getBroadcast(
-            this, 0, Intent(stop), PendingIntent.FLAG_UPDATE_CURRENT
+            this, 0, Intent(stop), PendingIntent.FLAG_IMMUTABLE,
         )
 
         // Create the persistent notification
@@ -63,7 +59,7 @@ class ForegroundService : Service() {
         val request = LocationRequest.create()
         request.interval = 1000
         request.fastestInterval = 3000
-        request.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        request.priority = Priority.PRIORITY_HIGH_ACCURACY
         val client = LocationServices.getFusedLocationProviderClient(this)
         val permission = ContextCompat.checkSelfPermission(
             this,
@@ -77,8 +73,8 @@ class ForegroundService : Service() {
             client.requestLocationUpdates(request, object : LocationCallback() {
                 override fun onLocationResult(locationResult: LocationResult) {
                     val location = """
-                        Latitude : ${locationResult.lastLocation.latitude}
-                        Longitude : ${locationResult.lastLocation.longitude}
+                        Latitude : ${locationResult.lastLocation?.latitude}
+                        Longitude : ${locationResult.lastLocation?.longitude}
                         """.trimIndent()
                     Toast.makeText(this@ForegroundService, location, Toast.LENGTH_SHORT).show()
                 }
@@ -86,11 +82,6 @@ class ForegroundService : Service() {
         } else {
             stopSelf()
         }
-    }
-
-    inner class MyBinder : Binder() {
-        val service: ForegroundService
-            get() = this@ForegroundService
     }
 
     companion object {
