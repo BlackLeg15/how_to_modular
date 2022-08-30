@@ -7,14 +7,10 @@ import android.content.IntentSender
 import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
-import android.os.Bundle
 import android.provider.Settings
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.MultiplePermissionsReport
-import br.com.lifecare.ForegroundService
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.karumi.dexter.PermissionToken
@@ -26,24 +22,26 @@ import java.lang.Exception
 
 open class MainActivity: FlutterActivity() {
 
-    private val CHANNEL = "background_location_service"
+    private val channel = "background_location_service"
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL).setMethodCallHandler { call, result ->
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel).setMethodCallHandler { call, result ->
             run {
                 if (call.method.equals("startLocationService")) {
-                    initLocationService();
+                    initLocationService()
                     result.success("Location service has been initialized")
+                } else if(call.method.equals("stopLocationService")){
+                    stopLocationService()
+                    result.success("Location service has been stopped")
                 }
             }
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    private fun stopLocationService(){
+        stopService(Intent(this, ForegroundService::class.java))
     }
 
     private fun initLocationService(){
@@ -101,11 +99,11 @@ open class MainActivity: FlutterActivity() {
         val builder = AlertDialog.Builder(this@MainActivity)
         builder.setTitle("Need Permissions")
         builder.setMessage("This app needs permission to use this feature. You can grant them in app settings.")
-        builder.setPositiveButton("GOTO SETTINGS") { dialog, which ->
+        builder.setPositiveButton("GOTO SETTINGS") { dialog, _ ->
             dialog.cancel()
             openSettings()
         }
-        builder.setNegativeButton("Cancel") { dialog, which -> dialog.cancel() }
+        builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
         builder.show()
     }
 

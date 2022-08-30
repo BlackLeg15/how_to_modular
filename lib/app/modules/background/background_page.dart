@@ -22,9 +22,11 @@ class _BackgroundPageState extends State<BackgroundPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Column(
         children: [
           ElevatedButton(onPressed: controller.startLocationService, child: const Text('Start location service')),
+          ElevatedButton(onPressed: controller.stopLocationService, child: const Text('Stop location service')),
         ],
       ),
     );

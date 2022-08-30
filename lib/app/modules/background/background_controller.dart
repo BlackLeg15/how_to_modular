@@ -10,4 +10,8 @@ class BackgroundController {
     final result = await backgroundServiceStore.platform.invokeMethod('startLocationService');
     debugPrint(result.toString());
   }
+  void stopLocationService() async {
+    final result = await backgroundServiceStore.platform.invokeMethod('stopLocationService');
+    debugPrint(result.toString());
+  }
 }
